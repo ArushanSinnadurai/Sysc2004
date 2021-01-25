@@ -1,0 +1,51 @@
+  private TicTacToeEnum findWinner()
+  {// horizontal check left and right
+       int counter =0;
+       for(int a = 0; a<nRows;a++)
+       {
+           for(int b =0; b < nColumns;b++ )
+           {
+               if((this.grid[a][b]== this.turn) &&(b + numToWin <= nColumns))
+               {
+                   counter=0;
+                   for(int c=0; c< numToWin; c++)
+                   {
+                       if(this.grid[a][b + c]== this.turn)
+                       {
+                           counter++;
+                       }
+                   }
+                   if(counter == this.numToWin)
+                   {
+                       this.gameState = charToEnum(this.turn);
+                       return this.gameState;
+                   }
+               }
+           }
+       }
+       // vertical check to up and down
+       for(int a = 0;a<nRows;a++)
+       {
+           for(int b =0; b < nColumns;b++ )
+           {
+               if((this.grid[a][b]== this.turn) &&(a + numToWin <= nRows))
+               {
+                   counter=0;
+                   for(int c=0; c< numToWin; c++)
+                   {
+                       if(this.grid[a+c][b]== this.turn)
+                       {
+                           counter++; 
+                       }
+                   }
+                   if(counter == this.numToWin)
+                    {
+                         this.gameState = charToEnum(this.turn);
+                       return this.gameState;
+                    }
+               }
+           }
+       }
+       
+       return TicTacToeEnum.IN_PROGRESS;
+  }
